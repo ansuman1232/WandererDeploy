@@ -1,6 +1,13 @@
+if(process.env.NODE_ENV !="production"){// when enviroment value != production then use below
+    require("dotenv").config({ path: __dirname + '/../.env' })
+   
+}
+
+
 const mongoose= require('mongoose');
 async function main(){
-await mongoose.connect( 'mongodb://127.0.0.1:27017/wanderer');
+   
+await mongoose.connect( process.env.ATLASDB_URL);
 console.log("connected to DB...");
 };
 main();
@@ -10,7 +17,7 @@ const Listing=require("../models/listing.js");//how to access another folder fil
 async function init(){
     await Listing.deleteMany({});
     initdata.data=initdata.data.map((obj)=>{
-     return obj={  ...obj,owner:'683f99c3a1453c13d39ff506'}
+     return obj={  ...obj,owner:"684fe99b56c1a6c8eaf44489"}      
 })
     await Listing.insertMany(initdata.data);
    

@@ -19,7 +19,7 @@ async function main(){
     await mongoose.connect(process.env.ATLASDB_URL);
 }
 main().then(()=>{console.log("connecting to db")})
-.catch(er=>{console.log(e);});
+.catch(er=>{console.log(er);});
 
 
 //to set ejs-mate=================
@@ -98,6 +98,16 @@ const passport=require("passport")
 app.use(passport.initialize())//when ever request comes to any route it must initialize the passport.
 app.use(passport.session())//this help  a web app to identify that same user is
  //sending the request to another page or different user.
+
+ passport.use(new LocalStrategy(User.authenticate()))
+//here we use LocalStrategy to authenticate users with the 
+// help of ‘authenticate()’ of passport-local-mongoose
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
 //===================for flash and showing login and sign and logout options====================
 
 const flash=require("connect-flash")

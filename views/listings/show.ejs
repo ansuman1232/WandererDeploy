@@ -74,7 +74,9 @@
          <p class="card-text"> <%= myDest.reviews[r].comment %></p>  <!--this is comment-->
       
          <form action="/review/<%=myDest._id%>/<%=myDest.reviews[r]._id%>?_method=DELETE"   method="post"><!--delete button-->
+         <% if(currUser && currUser._id.equals(myDest.reviews[r].author._id)){%> <!--only to display delete button to those users who have created-->
           <button class="btn btn-dark">Delete</button>
+          <%}%>
          </form> 
       </div>
     </div>
