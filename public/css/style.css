@@ -1,0 +1,280 @@
+.container{
+    width:100vw;
+    min-height:100vh;
+  
+}
+
+.plus-jakarta-sans{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 400 !important;
+    font-style: normal;
+  }
+
+.nav-link{
+    color:black !important;
+}
+
+.fa-compass{
+    color:rgb(203, 6, 39) !important;
+    font-size:2rem;
+}
+.navbar{
+    height:5%;
+}
+
+.collapse{
+    display:flex;
+    justify-content: space-between;
+}
+
+.search-btn{
+   background-color:rgb(203, 6, 39) !important;
+   color:white !important;
+   border-radius:50px !important;
+}
+.search-inp{
+    border-radius:50px !important;
+}
+    /* ===================for filters styling========= */
+    .filters{
+      display:flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .filter{
+    margin-right:2vw;
+    opacity:0.6;
+    text-align: center;
+    }
+
+    .filter:hover{
+ 
+    opacity:1;
+    }
+    
+    .filter a{
+     color:black;
+     text-decoration: none;
+    }
+
+    .tax-toggle{
+        border:2px solid black;
+        display:flex;
+        align-items: center;
+        border-radius:40px;
+        padding-left:0.5vw;
+        padding-right:0.5vw;
+        height:3vh;
+    }
+
+    .tax{
+        display:none;
+    }
+    .tax.show{
+        display:inline;
+    }
+/* 
+for footer ======================*/
+
+.footer{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ background-color:rgb(224, 216, 216);
+ height:20vh ;
+ /* to fix footer at bottom */
+ /* position:absolute;
+ bottom:0;
+width:100%; */
+}
+.footer-social,.footer-name,.footer-terms{
+    width:100%;
+    background-color:rgb(224, 216, 216);
+    justify-content:center;
+    display: flex;
+    margin:1rem 1rem 1rem;
+}
+
+.footer-name{
+    font-size: 1.2rem;
+}
+.footer-terms a{
+    text-decoration:none;
+    color:black;
+    font-size: 1.5rem;
+}
+.footer-terms a:hover{
+    text-decoration:underline;
+    color:black;
+    font-size: 1.5rem;
+}
+
+.footer-social i{
+margin-right:1rem;
+font-size: 2rem;
+}
+
+.footer-social i:hover{
+    margin-right:1rem;
+    font-size:2.2rem;
+    }
+
+    /* for cards */
+
+    .row{
+        width:100%;
+    }
+
+/* for listis page===================== */
+    .card {  
+        /* basic layout set for cards */
+            margin:2vh 3vw 2vh !important;
+            padding:0px !important;
+            border:0.1rem solid grey!important;
+            border-radius:1rem  !important;
+             
+       
+    }
+   
+    .card img{ 
+        /* to set card image */
+        height:18rem;
+        width :100%;
+        border-top-left-radius:1rem  !important;
+        border-top-right-radius:1rem  !important;
+    }
+
+    .card a{ 
+        /* removed decoration from <a> */
+        text-decoration: none;
+        color:black;
+    }
+
+    /* these effects are used to know which cards is selcted and also to dispaly the text on it */
+    .card1:hover{ 
+
+        opacity:0.5;
+    }
+   
+
+    .card-img-overlay{
+    opacity:0;
+     }
+    .card-img-overlay:hover{
+       color:black;
+        translate : 3rem 4rem;
+        font-size:2rem;
+        opacity:1;
+    }
+
+
+
+    /* for add form */
+    .add-btn{
+      background-color:rgb(203, 6, 39) ;
+      color:white;
+      border:white;
+      margin-bottom:1rem;
+    }
+
+       /* for edit form */
+       .edit-btn{
+        background-color:rgb(203, 6, 39) ;
+        color:white;
+        border:white;
+        margin-bottom:1rem;
+      }
+
+      /* ==========show page==============*/
+
+     .show-page img{
+        height:45vh!important;
+       
+     }
+     /* to remove the border of cards */
+     .show-page{
+        border:0px !important;
+        width:50vw !important;
+        height:90vh ;
+     }
+     /* to cancel out hover effect on card */
+     .show-page:hover{
+        border:0px !important;
+        opacity:1
+     }
+
+     /* to set all buttons */
+
+     .btns{
+        display:flex;
+        justify-content:space-around;
+     }
+
+      /* for map box */
+      #map{
+        height:100px;
+        width:100px;
+      }
+
+
+     /* for Erro.ejs  */
+     .txt{
+        translate:3rem;
+     }
+
+     /* review forms==================== */
+     .Rform{
+        width:50vw!important;
+     }
+    
+     /* to show all reviews========================= */
+     .allReviews{
+        width:50vw !important;
+     }
+     .shadow{
+        box-shadow:2px 3px 4px black;
+     }
+
+    /* ==================== for mobile phone responsivenes==================== */
+    @media(max-width:500px){
+    /* =================   for filters============ */
+    .filters{
+     flex-wrap:wrap;
+    }
+ .filter a{
+     color:black;
+     text-decoration: none;
+     font-size:1.4vh;
+    }
+.tax-btn{
+    font-size:1.3vh;
+    width:6vw;
+    font-weight: 600;
+    position:relative;
+    right:1.8vw;
+}
+.tax-toggle{
+     justify-items: center;
+     padding:0px;
+     height:5vh;
+}
+.collapse{
+    display:block;
+}
+
+/* =============for show pages================= */
+.show-page-row{
+    display:block !important;
+    position:relative;
+    left:5vw;
+}
+.revStar{
+ width: 50% !important;
+ 
+}
+.show-page-row img{
+    height:20vh !important;
+}
+
+    }

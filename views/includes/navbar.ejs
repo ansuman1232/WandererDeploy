@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-md bg-body-tertiary sticky-top border-bottom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listing"><i class="fa-solid fa-compass"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav"><!--for explore option-->
+          <a class="nav-link" href="/listing">Explore</a>
+        </div>
+     <div class="navbar-nav"> <!--for search bar-->
+        <form class="d-flex" role="search" action="../listing/search">
+          <input class="form-control search-inp me-2" type="search" placeholder="enter country" name="country" >
+          <button class="btn search-btn" type="submit">Search</button>
+        </form>
+      </div>
+
+        <div class="navbar-nav"><!--for other option except search-->
+          <a class="nav-link" href="/listing/newform">Add your home</a>    <!--keep this outside if(currUser)-->
+   <% if(currUser){%>
+      <a class="nav-link" href="../user/logout"><b>logout</b></a>
+       <%}%>
+     <% if(!currUser){%>
+    <a class="nav-link "  href="../user/login"><b>login</b></a>
+     <a class="nav-link" href="../user/signup"><b>signup</b></a>
+  <%}%>
+ </div>
+      </div>
+  
+    </div>
+  </nav>

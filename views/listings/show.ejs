@@ -1,0 +1,97 @@
+<%- layout("layouts/boilerplate") %>
+
+<body>
+    <br><br>
+    <!-- to give an offset used this <div> -->
+<div class="row show-page-row ">
+      <h1>Listing details:</h1>
+      <!-- to structure image and text used .card class -->
+      <div class="card show-page mt-2" >
+        <img src="<%=myDest.image.url%>" class="card-img-top" alt="loading image...">
+          <div class="card-body">
+           <p class="card-text">
+            
+               <p><h4><b><%=myDest.title%></b></h4></p>
+               <p><b>Owned By: </b><i><%= myDest.owner.username%></i></p>
+              <p><b>Description : </b><%=myDest.description%></p>
+            <!--here added rupee symbol and first converted the number to string using toLocaleString() then passed "en-IN" as parameter to add comma as indian standard -->
+              </p><b>price : </b>&#8377;<%=myDest.price.toLocaleString("en-IN")%></p>
+              <p><b>location : </b><%=myDest.location%></p>
+               <p><b>country : </b><%=myDest.country%></p>    
+        
+        </p>
+        </div>
+        <!-- to arrange buttons used this div -->
+         <% if(currUser && currUser._id.equals(myDest.owner._id)){%>
+     <div class="btns" >
+        <!-- here given buttons bootstrap style -->
+            <form action="/listing/update/<%=myDest._id%>">
+                <button class="btn btn-danger">edit</button>
+            </form>
+            <form action="/listing/<%=myDest._id%>?_method=DELETE" method="post">
+                <button class="btn btn-dark">delete</button>
+            </form>
+     </div>
+           <% }%>
+      </div>
+       <% if(currUser){%>
+      <div class="Rform col-12">
+        <hr>
+       
+        <h3>Review:</h3><br>
+        <form action="/review/<%=myDest._id%>" method="post" novalidate  class="needs-validation">
+          <label for="ratings" class="form-label">Ratings:</label>
+           <fieldset class="starability-coinFlip">
+  <input type="radio" id="first-rate1" name="review[ratings]" value="1" checked /><!--here set default value as 1 "chekced attribute"-->
+  <label for="first-rate1" title="Terrible" class="form-label">1 star</label>
+  <input type="radio" id="first-rate2" name="review[ratings]" value="2" />
+  <label for="first-rate2" title="Not good">2 stars</label>
+  <input type="radio" id="first-rate3" name="review[ratings]" value="3" />
+  <label for="first-rate3" title="Average">3 stars</label>
+  <input type="radio" id="first-rate4" name="review[ratings]" value="4" />
+  <label for="first-rate4" title="Very good">4 stars</label>
+  <input type="radio" id="first-rate5" name="review[ratings]" value="5" />
+  <label for="first-rate5" title="Amazing">5 stars</label>
+</fieldset>
+           <label for="comment" class="form-label" >Comment:</label><br>
+           <textarea name="review[comment]" class="form-control" id="comment" placeholder="Enter your comment" rows="5" cols="60" required></textarea><br>
+           <div class="invalid-feedback">Please enter some comments</div>
+           <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </form>
+        <br>
+      </div>
+      <% }%>
+      <% if(myDest.reviews.length!==0){%> 
+       <div class="row allReviews"> <!--to give grid like structure-->
+        <hr>
+        <h3>All Reviews:</h3>
+        
+         <% for(r in myDest.reviews) {%>                 <!--here r is index of array this will help to show reviews in the form of list -->
+         <div class="card col-lg-4  col-12 mr-2 mb-3 shadow">
+         <div class="card-body">
+         <h5 class="card-title"><%=myDest.reviews[r].author.username%></h5>   <!--this is user name-->
+              <p class="starability-result card-text revStar" data-rating="<%= myDest.reviews[r].ratings  %>"> </p>
+         <p class="card-text"> <%= myDest.reviews[r].comment %></p>  <!--this is comment-->
+      
+         <form action="/review/<%=myDest._id%>/<%=myDest.reviews[r]._id%>?_method=DELETE"   method="post"><!--delete button-->
+          <button class="btn btn-dark">Delete</button>
+         </form> 
+      </div>
+    </div>
+      
+       <%}%>
+      </div>
+    <!-- -----------  for maps------------- -->
+   
+     <%}%>
+      <!--=======================this was for static view of maps=============-->
+       <!-- <hr>         
+     <h3>Where we will be:</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14968.483611234435!2d85.819392!3d20.29526215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1749768668178!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+    
+</div> 
+
+
+</body>
+<br><br>
+

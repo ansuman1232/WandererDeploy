@@ -1,0 +1,107 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+<body>
+    <H1>Edit form:</H1>
+    <form action="/listing/<%=data._id%>?_method=PUT" class="needs-validation" method="post"  enctype="multipart/form-data" novalidate>
+        <!-- here added the div class='row' as to align all the input elements poperly -->
+        <div class="row">
+            <!-- to give some extra space done between 2 input elemetns used :- "mb-3" -->
+            <div class="mb-3" >
+                <!--adde this class:- form-label to labels and form-control to input to give bootstrap effect -->
+                <label class="from-label" for="title">Title:</label>
+             <input type="text" name="listing[title]" id="title" value="<%=data.title %>" class="form-control" required>
+             <!-- to show invalid feedback message with text-box -->
+             <div class="invalid-feedback">
+                Please enter a valid title
+              </div>
+            </div>
+    
+            <div class="mb-3" >
+              <label for="description" class="form-label">descrtion:</label>
+              <textarea name="listing[description]" id="description"   class="form-control" required><%=data.description%></textarea>
+              <div class="invalid-feedback">
+                Please enter a valid descrption
+              </div>
+            </div>
+             <!-- added this div to put 2 input elements together  -->
+            <div class="row ">
+                <!-- price will take 3 columns in md or large or xl screen else all columns and country 6 col in mid or large or xl else all columns -->
+                <div class="col-md-3 col-12">
+                <label for="price" class="form-label">price:</label>
+                <input type="number" name="listing[price]" id="price"value="<%=data.price%>" class="form-control" required>
+                <div class="invalid-feedback">
+                    Please enter a valid price
+                  </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <label for="country" class="form-label">country:</label>
+                <input type="text" name="listing[country]" id="country" value="<%=data.country%>" class="form-control" required>
+                <div class="invalid-feedback">
+                    Please enter a valid country name
+                  </div>
+            </div>
+            
+               <div class="col-md-3 col-12">
+            <label for="category" class="form-label">category:</label>
+
+            <select name="listing[category]" id=""  class="form-control" required>
+              <option value="rooms" <%if(data.category==="rooms"){%>
+                Selected<%}%>>rooms</option>
+
+
+              <option value="pools"
+              <%if(data.category==="pools"){%>
+                Selected<%}%>
+              >pools</option>
+
+              <option value="mountain"
+              <%if(data.category==="mountain"){%>
+                Selected<%}%>
+              >mountian</option>
+              <option value="farm"  
+              <%if(data.category==="farm"){%>
+                Selected<%}%>>farm</option>
+
+
+
+              <option value="beach" <%if(data.category==="beach"){%>
+                Selected<%}%>>beach</option>
+
+              <option value="iconic city"<%if(data.category==="iconic city"){%>
+                Selected<%}%>>iconic city</option>
+            </select>
+            <div class="invalid-feedback">
+                Please enter a valid country
+              </div>
+        </div>
+       
+
+
+            </div>
+          
+            <div class="mb-3">
+                <label for="location" class="form-label">location:</label>
+               <input type="text" name="listing[location]" id="location" value="<%=data.location%>" class="form-control" required>
+               <div class="invalid-feedback">
+                Please enter a valid location
+              </div>
+        </div>
+        <div class="mb-3">
+          <h4>Original Image:</h4>
+          <img src="<%=originalUrl%>" alt="image">
+          </div>
+        
+            <div class="mb-3">
+              <label for="image" class="form-label">image:</label>
+             <input type="file" name="listing[image]" id="image" class="form-control" >
+             <div class="invalid-feedback">
+              Please enter a image
+            
+          </div>
+        </div>
+     
+    </div>
+    <button class="edit-btn">edit</button>
+      
+    </form><br><br>
+
+</body>
