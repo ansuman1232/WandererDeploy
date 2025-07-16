@@ -76,11 +76,11 @@ sessionStore.on("error",(err)=>{//if there is any error then print that error.
 })
 const sessionOption={//setting session options
     store:sessionStore,//here storing the session data in database.
-    secret:process.env.SECRET,
-    resave:"false",
-    saveUninitialized:"true",
-    cookies:{
-     expires: Date.now() +7*24*60*60*1000,// this will ensure that cookie will be delete from browser 
+    secret:process.env.SECRET,  //	Used to sign the session ID to prevent tampering
+    resave:false,              //Reduces database load by not saving unmodified sessions
+    saveUninitialized:true,    // Save uninitialized sessions (can be true for login tracking)
+    cookie:{
+     expires: new Date( Date.now() +7*24*60*60*1000),// this will ensure that cookie will be delete from browser 
      //after 7 days , if no value is set then it will be deleted just after browser is closed.
      maxAge: 7*24*60*60*1000,//set the max age also with expire date
      httpOnly:true,//to protect form cross scripting attack(not explained in detail)
